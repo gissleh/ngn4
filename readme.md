@@ -2,21 +2,26 @@
 ## NOTE
 This has nothing to do with the distributed services platfor called "ngn". The name is to remain consistent with ngn3. I'll make a note to search the npm the next time I name a module.
 
+## Install
+This module is available in the npm registry under the name ``ngn4``, so ``npm install ngn4`` will work. This is a node.js module, not an end-user application that can be used.
+
 ## See it in action
 A express-based website can be found [here](http://ngn4.apeloff.com). It generates on the server-side and sends them in batches of 24 to the client, which requests a new batch when there's 12 or fewer in its buffer. It's just for testing, as a well-designed website will take its place when it's finished.
+
+I also made a quick and dirty app to test compiling a name-part in browser, which you can find [here](http://ngn4.apeloff.com/static/test.html).
 
 ## About
 A few years ago, I was dissatisfied with the lack of name generators for Mass Effect aliens. I took matters in my own hands and started developing my own to fit that. This is the fourth time I've developed one, as the third one, while good enough, was scattered (the compiler was in .NET and separate from the website and all that) and messy.
 
-It's usable right now, and I hope the examples provide enough information if you're looking for something like this. The MIT licence and disclaimer. applies, however.
+It's usable right now, and I hope the examples provide enough information if you're looking for something like this. The MIT licence and disclaimer. applies, however. It does not come with any samples, and is not intended to generate a specific type of name.
 
-There's no sample repository. If someone with know-how about the legal aspects of listing names that are part of potentially trademarked or copyrighted fictional material does so, I'll gladly contribute to it. Let me know on the email address associated with this user, or issue tracker if this is on git by the time you read this.
+There's no sample repository at the moment. If someone with know-how about the legal aspects of listing names that are part of potentially trademarked or copyrighted fictional material does so, I'll gladly contribute to it and link it from here. Let me know on the email address associated with this user, or issue tracker. I think the way to go for a quality and quantity "everything under the sun name generator" would be a crowd-sourced public repository of names.
 
 ## Loaders
 A loader is what turns formatted samples into structured data the algorithm can compile into usable data. The examples here are basic, as the algorithms provide loader examples relevant to them.
 
 ## Run client-side in browser
-In linux, run ``node makewebversion.js >/path/to/website/ngn4.js`` and it'll concaterate and process the scripts to a single script that can be used in the browser. It won't use a ngn4 "namespace" there, however. ``algos`` and ``loaders`` are global objects. 
+In linux, run ``node makewebversion.js >/path/to/website/ngn4.js`` and it'll concaterate and process the scripts to a single script that can be used in the browser. It won't use a ngn4 "namespace" there, however. ``algos`` and ``loaders`` are global objects.
 
 ### fullname
 This loads each token into a separate list, and each list ends up as an array with just the content.
@@ -54,8 +59,6 @@ ra na
 ta na
 da ra
 ```
-
-###
 
 ## Algorithms
 There are two loaders and four 'algorithms' that can be used to generate, and each part can have a different algorithm. The four of them are
@@ -250,6 +253,8 @@ for(var i = 0; i < 3; ++i) {
 ```
 
 ## ChangeLog
+The changelog is for the node.js module version, and may include silly things like readme being updated.
+
 ```
 0.2.2
 - Readme...
@@ -316,6 +321,6 @@ for(var i = 0; i < 3; ++i) {
 ```
 
 ## Contributing
-I'll put it up on github later.
+The
 
 See the scripts in ``loaders/`` and ``algos/`` to get an idea about how to extend that to another algorithm. All loaders get the lines tokenized, but array joins are cheap, especially for a one-time script that end-users won't have to run.
