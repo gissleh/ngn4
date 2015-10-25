@@ -254,6 +254,9 @@ for(var i = 0; i < 3; ++i) {
 The changelog is for the node.js module version, and may include silly things like readme being updated.
 
 ```
+0.2.3
+- Updated readme and package.json to reflect that it's now on GitHub.
+
 0.2.2
 - Readme...
 

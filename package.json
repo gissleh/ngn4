@@ -1,6 +1,6 @@
 {
   "name": "ngn4",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Multi-algorithm name generator engine",
   "main": "ngn4.js",
   "scripts": {
@@ -15,6 +15,10 @@
     "name generator",
     "namegenerator"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gissleh/ngn4.git"
+  },
   "author": "Gisle Aune",
   "license": "MIT"
 }
