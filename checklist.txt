@@ -1,0 +1,16 @@
+[3/4] Algorithms
+    [X] Select
+    [X] Syllables
+    [X] Markov
+    [ ] Grammar
+[5/5] Generator
+    [X] PartFormat
+    [X] NamePart
+    [X] NameFormat
+    [X] NameGenerator
+    [X] NameGeneratorSet
+[1/1] Loading
+    [X] SampleLoader
+[2/3] Frontends
+    [X] ngn4.js
+    [ ] ngn4-scripts.php
