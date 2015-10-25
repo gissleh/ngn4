@@ -15,8 +15,6 @@ A few years ago, I was dissatisfied with the lack of name generators for Mass Ef
 
 It's usable right now, and I hope the examples provide enough information if you're looking for something like this. The MIT licence and disclaimer. applies, however. It does not come with any samples, and is not intended to generate a specific type of name.
 
-There's no sample repository at the moment. If someone with know-how about the legal aspects of listing names that are part of potentially trademarked or copyrighted fictional material does so, I'll gladly contribute to it and link it from here. Let me know on the email address associated with this user, or issue tracker. I think the way to go for a quality and quantity "everything under the sun name generator" would be a crowd-sourced public repository of names.
-
 ## Loaders
 A loader is what turns formatted samples into structured data the algorithm can compile into usable data. The examples here are basic, as the algorithms provide loader examples relevant to them.
 
@@ -321,6 +319,10 @@ The changelog is for the node.js module version, and may include silly things li
 ```
 
 ## Contributing
-The
+The generator is complete for my use, but feel free to extend it with another algorithm (and loader if need be) and report (or fix) bugs.
 
 See the scripts in ``loaders/`` and ``algos/`` to get an idea about how to extend that to another algorithm. All loaders get the lines tokenized, but array joins are cheap, especially for a one-time script that end-users won't have to run.
+
+There's no sample repository at the moment. If someone with know-how about the legal aspects of listing names that are part of potentially trademarked or copyrighted fictional material does so, I'll gladly contribute to it and link it from here. Fanfiction and roleplaying communities have been my greatest sources of sample names. Let me know on the email address associated with this user, or the issue tracker, if you made one.
+
+I'm new to github, so I might have to learn some things about git that are unique to projects that does git right.
