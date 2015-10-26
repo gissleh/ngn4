@@ -41,7 +41,7 @@ function NameGenerator(/*obj OR id, name*/) {
     }
 }
 
-NameGenerator.prototype.addPart = function(id, args) {    
+NameGenerator.prototype.addPart = function(id, args) {
     this.parts[id] = new NamePart(id, algos[args.algo], args.options, args.format);
 
     if(args.hasOwnProperty('lfRules')) {
@@ -98,8 +98,24 @@ NameGenerator.prototype.generate = function(formatId, gender, randomFunction) {
     if(typeof(formatId) === 'undefined' || formatId == null) {
         keys = Object.keys(this.formats);
         format = this.formats[keys[0]];
+
+        for(var i = 0; i < keys.length; ++i) {
+            var split = keys[i].split('.');
+            if(split.length > 1 && split[1] === gender) {
+                format = this.formats[keys[i]];
+                break;
+            }
+        }
     } else {
-        format = this.formats[formatId];
+        if(this.formats.hasOwnProperty(formatId + '.' + gender)) {
+            format = this.formats[formatId + '.' + gender]
+        } else {
+            format = this.formats[formatId];
+        }
+    }
+
+    if(typeof(format) === 'undefined') {
+        return null;
     }
 
     return format.generateParts(this.parts, gender, randomFunction);
@@ -120,7 +136,7 @@ NameGenerator.prototype.export = function() {
 
         r.formats[keys[i]] = {
             name: format.name,
-            format: format.format
+            format: format.formats
         };
     }
 

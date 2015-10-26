@@ -8,7 +8,8 @@ module.exports = function(assert, info, assertList) {
     ng.addPart('first', {algo: 'syllables', list: "first", options: {lfOverrides: {'i': 1}}, format: 'Aa'});
     ng.addPart('first.f', {algo: 'syllables', list: "first.f", options: {}, format: 'Aa'});
     ng.addPart('title', {algo: 'select', list: "title", options: {}, format: 'Aa'});
-    ng.addFormat('full_name', {name: "Full Name", format: "{first}, the {title}"})
+    ng.addFormat('full_name.m', {name: "Full Name", format: "{first}, the {title}"});
+    ng.addFormat('full_name.f', {name: "Full Name", format: "{title} {first}"});
 
     ng.addList('first', [{id: ".anon0", headers: [".anon0"], lines: [['e', 'ri', 'nus'], ['a', 'vi', 'rus'], ['i', 'me', 'lix']]}])
     ng.addList('first.f', [{id: ".anon0", headers: [".anon0"], lines: [['e', 'ri', 'na'], ['a', 'vi', 'ra'], ['i', 'me', 'lis']]}])

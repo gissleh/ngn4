@@ -254,6 +254,14 @@ for(var i = 0; i < 3; ++i) {
 The changelog is for the node.js module version, and may include silly things like readme being updated.
 
 ```
+0.3.0
+- Formats can now have multiple different output formats (e.g.
+    formats.full_name.format = ["{first}, the {title}", "{title} {first}",
+    "{first}"])
+- Formats can now be gendered, as well; e.g. "full_name.female" and
+    "full_name.male". These are chosen when available. This along with the
+    other change will make sample files incompatible with 0.2.3 and earlier.
+
 0.2.3
 - Updated readme and package.json to reflect that it's now on GitHub.
 
