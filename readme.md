@@ -1,25 +1,22 @@
 # ngn4 - Open Name Generator Engine
-## NOTE
-This has nothing to do with the distributed services platfor called "ngn". The name is to remain consistent with ngn3. I'll make a note to search the npm the next time I name a module.
+## See it in action
+A express-based website can be found [here](http://ngn4.apeloff.com). It generates on the server-side and sends them in batches of 24 to the client, which requests a new batch when there's 12 or fewer in its buffer. It's just for testing, as a well-designed website will take its place when it's finished.
+
+I also made a quick and dirty app to test compiling a name-part in browser, which you can find [here](http://ngn4.apeloff.com/static/test.html). It will crash if a syllables or grammar group can't generate a name that is not a sample.
+
+## About
+A few years ago, I was dissatisfied with the lack of name generators for Mass Effect aliens. I took matters in my own hands and started developing my own to fit that. This is the fourth time I've developed one, as the [third one](http://ngn3.apeloff.com/), while good enough, was scattered (the compiler was in .NET and separate from the website and all that). The javascript was also atrocious as it was sort of my first javascript web project.
+
+It's usable right now, and I hope the examples provide enough information if you're looking for something like this. It does not come with any samples, and is not intended to generate a specific type of name.
 
 ## Install
 This module is available in the npm registry under the name ``ngn4``, so ``npm install ngn4`` will work. This is a node.js module, not an end-user application that can be used.
 
-## See it in action
-A express-based website can be found [here](http://ngn4.apeloff.com). It generates on the server-side and sends them in batches of 24 to the client, which requests a new batch when there's 12 or fewer in its buffer. It's just for testing, as a well-designed website will take its place when it's finished.
-
-I also made a quick and dirty app to test compiling a name-part in browser, which you can find [here](http://ngn4.apeloff.com/static/test.html).
-
-## About
-A few years ago, I was dissatisfied with the lack of name generators for Mass Effect aliens. I took matters in my own hands and started developing my own to fit that. This is the fourth time I've developed one, as the third one, while good enough, was scattered (the compiler was in .NET and separate from the website and all that) and messy.
-
-It's usable right now, and I hope the examples provide enough information if you're looking for something like this. The MIT licence and disclaimer. applies, however. It does not come with any samples, and is not intended to generate a specific type of name.
+## Run client-side in browser
+In linux, run ``node makewebversion.js >/path/to/website/ngn4.js`` and it'll concaterate and process the scripts to a single script that can be used in the browser. It won't use a ngn4 "namespace" there, however. ``algos`` and ``loaders`` are global objects.
 
 ## Loaders
 A loader is what turns formatted samples into structured data the algorithm can compile into usable data. The examples here are basic, as the algorithms provide loader examples relevant to them.
-
-## Run client-side in browser
-In linux, run ``node makewebversion.js >/path/to/website/ngn4.js`` and it'll concaterate and process the scripts to a single script that can be used in the browser. It won't use a ngn4 "namespace" there, however. ``algos`` and ``loaders`` are global objects.
 
 ### fullname
 This loads each token into a separate list, and each list ends up as an array with just the content.
@@ -254,6 +251,10 @@ for(var i = 0; i < 3; ++i) {
 The changelog is for the node.js module version, and may include silly things like readme being updated.
 
 ```
+0.3.1
+- Fixed partformat cases to make it possible to replace with nothing, for
+    example to make a hidden capitalization caret (e.g. "Aa_A_R;").
+
 0.3.0
 - Formats can now have multiple different output formats (e.g.
     formats.full_name.format = ["{first}, the {title}", "{title} {first}",

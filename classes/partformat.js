@@ -80,7 +80,7 @@ PartFormat.prototype.apply = function (name) {
         }
 
         if(replace !== null) {
-            if(replace.length == 1) {
+            if(replace.length <= 1) {
                 next = replace;
             } else {
                 next = replace[0];
