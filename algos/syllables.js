@@ -7,12 +7,12 @@ var algo = {
     parseList: function(input, options, lfRules) {
         var r = {
             positions: [0],
-            groups: input,
+            groups: [].concat(input),
             size: 0
         };
 
-        for(var i = 0; i < input.length; ++i) {
-            var group = input[i];
+        for(var i = 0; i < r.groups.length; ++i) {
+            var group = r.groups[i];
 
             if(group.headers.length >= 2) {
                 group.weigthMultiplier = parseFloat(group.headers[1]);
@@ -20,9 +20,12 @@ var algo = {
                 group.weigthMultiplier = 1;
             }
 
-            if(group.lines.length === 0) {
+            if(group.lines.length <= 1) {
+                console.error('SKIPPED "' + group.id + '" (length <= 1)');
+                r.groups.splice(i, 1);
+                --i;
+
                 continue;
-                width = 0;
             }
 
             group.width = group.lines[0].length;
@@ -122,6 +125,22 @@ var algo = {
             if(fail) {
                 if(pick === prev) {
                     result = [];
+
+                    if(group.lines.length <= group.width) {
+                        var group = null;
+
+                        for(var i = 0; i < data.groups.length - 1; ++i) {
+                            if(rand < data.positions[i + 1]) {
+                                group = data.groups[i];
+                                break;
+                            }
+                        }
+
+                        if(group == null || group == undefined) {
+                            group = data.groups[data.groups.length - 1];
+                        }
+                    }
+
                     prev = null;
                 } else {
                     prev = pick;

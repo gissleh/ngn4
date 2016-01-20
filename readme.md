@@ -1,16 +1,14 @@
 # ngn4 - Open Name Generator Engine
 ## See it in action
-A express-based website can be found [here](http://ngn4.apeloff.com). It generates on the server-side and sends them in batches of 24 to the client, which requests a new batch when there's 12 or fewer in its buffer. It's just for testing, as a well-designed website will take its place when it's finished.
-
-I also made a quick and dirty app to test compiling a name-part in browser, which you can find [here](http://ngn4.apeloff.com/static/test.html). It will crash if a syllables or grammar group can't generate a name that is not a sample.
+UPDATE: These links were dead as I put that server to other uses. I will update this page when I get ngn4.io up and running.
 
 ## About
-A few years ago, I was dissatisfied with the lack of name generators for Mass Effect aliens. I took matters in my own hands and started developing my own to fit that. This is the fourth time I've developed one, as the [third one](http://ngn3.apeloff.com/), while good enough, was scattered (the compiler was in .NET and separate from the website and all that). The javascript was also atrocious as it was sort of my first javascript web project.
+A few years ago, I was dissatisfied with the lack of name generators for Mass Effect aliens. I took matters in my own hands and started developing my own to fit that. This is the fourth time I've developed one, as the [third one](http://ngn3.apeloff.net/) (Site is down: expected back in early February), while good enough, was scattered (the compiler was in .NET and separate from the website and all that). The javascript was also atrocious since I was learning many aspects of the language at the same time as porting a C# project.
 
-It's usable right now, and I hope the examples provide enough information if you're looking for something like this. It does not come with any samples, and is not intended to generate a specific type of name.
+ngn4 is usable right now, and I hope the examples provide enough information if you're looking for something like this for your own website or node.js module.
 
 ## Install
-This module is available in the npm registry under the name ``ngn4``, so ``npm install ngn4`` will work. This is a node.js module, not an end-user application that can be used.
+This module is available in the npm registry under the name ``ngn4``, so ``npm install ngn4`` will work. This is a node.js module, not an end-user application.
 
 ## Run client-side in browser
 In linux, run ``node makewebversion.js >/path/to/website/ngn4.js`` and it'll concaterate and process the scripts to a single script that can be used in the browser. It won't use a ngn4 "namespace" there, however. ``algos`` and ``loaders`` are global objects.
@@ -251,9 +249,18 @@ for(var i = 0; i < 3; ++i) {
 The changelog is for the node.js module version, and may include silly things like readme being updated.
 
 ```
+0.4.0
+- SampleLoader now removes those pesky carriage-returns.
+- Added some more ways to prevent infinite loops in grammar and syllables.
+- Added a way to associate arbitrary meta-data with generators and categories.
+- Added experimental (and broken) loader to automagically load tokens.
+    It's there if you want to try it, but I recommend waiting for 0.5.0 for a
+    more stable version so you won't have to edit samples.
+
 0.3.1
-- Fixed partformat cases to make it possible to replace with nothing, for
-    example to make a hidden capitalization caret (e.g. "Aa_A_R;").
+- Fixed partformat bug that made it impossible to replace with nothing, for
+    example to make a hidden capitalization caret (e.g. "Aa_A_R;" to turn
+    "some_stuff" into "SomeStuff").
 
 0.3.0
 - Formats can now have multiple different output formats (e.g.

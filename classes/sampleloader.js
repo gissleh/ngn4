@@ -19,6 +19,11 @@ SampleLoader.prototype.loadFromLines = function (lines) {
             line = line.replace('\t', ' ');
         }
 
+        // Make the carriage-returns go away.
+        while(line.indexOf('\r') >= 0) {
+            line = line.replace('\r', '');
+        }
+
         // Remove double-spaces to avoid empty tokens.
         while(line.indexOf('  ') >= 0) {
             line = line.replace('  ', ' ');

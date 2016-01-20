@@ -10,6 +10,7 @@ function NameGenerator(/*obj OR id, name*/) {
     this.parts = {};
     this.formats = {};
     this.listIds = {};
+    this.meta = {};
 
     // id, name arguments
     if(arguments.length > 1) {
@@ -24,7 +25,7 @@ function NameGenerator(/*obj OR id, name*/) {
     // object argument
     this.id = obj.id;
     this.name = obj.name;
-    this.genders = obj.genders || null;
+    this.genders = obj.genders || ["UNSPECIFIED"];
 
     if(obj.hasOwnProperty('parts')) {
         var keys = Object.keys(obj.parts);
@@ -38,6 +39,10 @@ function NameGenerator(/*obj OR id, name*/) {
         for(var i = 0; i < keys.length; ++i) {
             this.addFormat(keys[i], obj.formats[keys[i]]);
         }
+    }
+
+    if(obj.hasOwnProperty('meta')) {
+        this.meta = obj.meta;
     }
 }
 
@@ -59,6 +64,18 @@ NameGenerator.prototype.addPart = function(id, args) {
 
 NameGenerator.prototype.addFormat = function(id, args) {
     this.formats[id] = new NameFormat(id, args.name, args.format);
+}
+
+NameGenerator.prototype.addListsFromLoader = function(loader) {
+    var keys = Object.keys(this.listIds);
+
+    for(var i = 0; i < keys.length; ++i) {
+        var part = this.parts[keys[i]];
+
+        if(loader.lists.hasOwnProperty(keys[i])) {
+            part.loadList(loader.lists[keys[i]]);
+        }
+    }
 }
 
 NameGenerator.prototype.addList = function(listId, listData) {
@@ -127,7 +144,8 @@ NameGenerator.prototype.export = function() {
         name: this.name,
         genders: this.genders,
         formats: {},
-        parts: {}
+        parts: {},
+        meta: this.meta
     };
 
     var keys = Object.keys(this.formats);

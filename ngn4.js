@@ -8,5 +8,7 @@ module.exports = {
     SampleLoader: require('./classes/sampleloader.js'),
 
     algos: require('./ngn4-algos.js'),
-    loaders: require("./ngn4-loaders.js")
+    loaders: require("./ngn4-loaders.js"),
+
+    version: require('./package.json').version
 }

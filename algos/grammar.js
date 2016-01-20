@@ -58,12 +58,19 @@ var algo = {
                 continue;
             }
 
+            var strikes = 0;
+
             for(var j = 0; j < word.f.length; ++j) {
                 var symbol = word.f[j];
 
-                if(r.symbols[symbol].length <= 1) {
-                    console.error('\tWARNING "'+word.f.join(' ')+'"/"'+symbol+'".length = 1');
+                if(r.symbols[symbol].length <= word.l) {
+                    ++strikes;
                 }
+            }
+
+            if(strikes === word.f.length) {
+                r.words.splice(i, 1);
+                console.error('\tSKIPPED "'+word.f.join(' ')+'" (length <= 1)');
             }
         }
 
@@ -150,6 +157,25 @@ var algo = {
             if(fail) {
                 if(prev === pick) {
                     prev = null;
+
+                    // If word's wieght is smaller than symbol count,
+                    //  retry with another word. This is to prevent crashing
+                    if(word.l <= word.f.length) {
+                        var r = Math.floor(randomFunction() * data.size);
+
+                        word = null;
+                        for(var i = 0; i < data.words.length; ++i) {
+                            if(r < data.positions[i + 1]) {
+                                word = data.words[i];
+                                break;
+                            }
+                        }
+
+                        if(word === null) {
+                            word = data.words[data.words.length - 1];
+                        }
+                    }
+
                     result = [];
                 } else {
                     prev = pick;
