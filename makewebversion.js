@@ -1,7 +1,14 @@
 var fs = require('fs');
 var path = require('path');
 
-var result = '"use strict";\nvar algos = {};\nvar loaders = {};';
+var result = '';
+
+result += "// This file is made from automatically concaterad and filtered node.js scripts.";
+result += "\n// ngn4 is open source, and provided under an MIT licence";
+result += "\n// See https://github.com/gissleh/ngn4 for more details. \n\n";
+result += "\n// Copyright (c) 2015 Gisle Aune";
+
+result += '"use strict";\nvar algos = {};\nvar loaders = {};\n\n'
 
 function run() {
     var directories = getDirectories('./');
@@ -11,9 +18,11 @@ function run() {
     for(var i = 0; i < directories.length; ++i) {
         var dir = directories[i];
 
-        if(dir.charAt(0) === '.' || dir === "example" || dir === 'node_modules' || dir === 'tests') {
+        if(dir.charAt(0) === '.' || dir === "example" || dir === 'node_modules' || dir === 'tests' || dir === 'browser-script') {
             continue;
         }
+
+        console.error("[INFO] Concaterating scripts in " + dir);
 
         processFiles(dir, parse);
     }

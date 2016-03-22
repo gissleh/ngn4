@@ -249,6 +249,10 @@ for(var i = 0; i < 3; ++i) {
 The changelog is for the node.js module version, and may include silly things like readme being updated.
 
 ```
+0.4.1
+- Fixed error caused by missing meta-data when loading data made for versions before 4.0
+- Included web versions
+
 0.4.0
 - SampleLoader now removes those pesky carriage-returns.
 - Added some more ways to prevent infinite loops in grammar and syllables.

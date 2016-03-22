@@ -102,26 +102,28 @@ NameGeneratorSet.prototype.export = function() {
     return r;
 }
 
-NameGeneratorSet.prototype.import = function(obj) {
-     var keys, key;
+NameGeneratorSet.prototype.import = function(obj, preload) {
+    var keys, key;
 
-     keys = Object.keys(obj.categories);
-     for(var i = 0; i < keys.length; ++i) {
-         key = keys[i];
-         this.setCategoryName(key, obj.categories[key])
-     }
+    keys = Object.keys(obj.categories);
+    for(var i = 0; i < keys.length; ++i) {
+       key = keys[i];
+       this.setCategoryName(key, obj.categories[key])
+    }
 
-     keys = Object.keys(obj.generators);
-     for(var i = 0; i < keys.length; ++i) {
-         key = keys[i];
-         this.addGenerator(key, obj.generators[key]);
-     }
+    keys = Object.keys(obj.generators);
+    for(var i = 0; i < keys.length; ++i) {
+       key = keys[i];
+       this.addGenerator(key, obj.generators[key], preload);
+    }
 
-     keys = Object.keys(obj.categoryMetaData);
-     for(var i = 0; i < keys.length; ++i) {
-         key = keys[i];
-         this.setCategoryMetaData(key, obj.categoryMetaData[key])
-     }
+    if(typeof(obj.categoryMetaData) === 'object' && obj.categoryMetaData !== null) {
+        keys = Object.keys(obj.categoryMetaData);
+        for(var i = 0; i < keys.length; ++i) {
+            key = keys[i];
+            this.setCategoryMetaData(key, obj.categoryMetaData[key])
+        }
+    }
 }
 
 NameGeneratorSet.prototype.getGeneratorIds = function() {
