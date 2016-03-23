@@ -1,6 +1,10 @@
 # ngn4 - Open Name Generator Engine
 ## See it in action
-UPDATE: These links were dead as I put that server to other uses. I will update this page when I get ngn4.io up and running.
+I made a website at [ngn4.io](http://www.ngn4.io) that shows this generator running in a browser. 
+You can also generate names server-side on a node.js server, which the limited API does: 
+[example](http://www.ngn4.io/g/me/turian/full_name/female/10). I may open-source the website 
+source code properly when I've tidied it up. I haven't minified the one on the website, making it 
+readable.
 
 ## About
 A few years ago, I was dissatisfied with the lack of name generators for Mass Effect aliens. I took matters in my own hands and started developing my own to fit that. This is the fourth time I've developed one, as the [third one](http://ngn3.apeloff.net/) (Site is down: expected back in early February), while good enough, was scattered (the compiler was in .NET and separate from the website and all that). The javascript was also atrocious since I was learning many aspects of the language at the same time as porting a C# project.
@@ -72,7 +76,7 @@ a n a ya
 i l e na
 ```
 
-This is equalent to the following Backus–Naur notation:
+This is equalent to the following Backus–Naur notation (which is not a format this library uses):
 ```
 <output> ::= <SV><VL><END> | <SV><CL><VL><END>
 <SC> ::= "s" | "v",
@@ -246,12 +250,22 @@ for(var i = 0; i < 3; ++i) {
 ```
 
 ## ChangeLog
-The changelog is for the node.js module version, and may include silly things like readme being updated.
+The changelog is for the node.js module version, and may include silly things like readme being 
+updated. If you know of a way to update the readme without submitting a new version, please 
+send an email my way.
 
 ```
+0.4.3
+- Readme
+
+0.4.2
+- Fixed bug with NameGenerator.addListsFromLoader() where it would not work if 
+   part name and list name differed.
+
 0.4.1
-- Fixed error caused by missing meta-data when loading data made for versions before 4.0
-- Included web versions
+- Fixed error caused by missing meta-data when loading data made for versions 
+    before 4.0.
+- Included web versions.
 
 0.4.0
 - SampleLoader now removes those pesky carriage-returns.
