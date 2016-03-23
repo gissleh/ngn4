@@ -71,9 +71,10 @@ NameGenerator.prototype.addListsFromLoader = function(loader) {
 
     for(var i = 0; i < keys.length; ++i) {
         var part = this.parts[keys[i]];
+        var listId = this.listIds[keys[i]];
 
-        if(loader.lists.hasOwnProperty(keys[i])) {
-            part.loadList(loader.lists[keys[i]]);
+        if(loader.lists.hasOwnProperty(listId)) {
+            part.loadList(loader.lists[listId]);
         }
     }
 }
