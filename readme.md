@@ -255,6 +255,9 @@ updated. If you know of a way to update the readme without submitting a new vers
 send an email my way.
 
 ```
+0.4.4
+- Fixed bug where importing metadata for a category would cause an error
+
 0.4.3
 - Readme
 

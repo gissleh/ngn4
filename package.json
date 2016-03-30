@@ -1,6 +1,6 @@
 {
   "name": "ngn4",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Multi-algorithm name generator engine",
   "main": "ngn4.js",
   "scripts": {

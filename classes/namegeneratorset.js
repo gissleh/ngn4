@@ -17,7 +17,7 @@ NameGeneratorSet.prototype.setCategoryMeta = function(id, meta) {
 }
 
 NameGeneratorSet.prototype.getMeta = function(id, key, defaultValue) {
-    var catId = id.split('/');
+    var catId = id.split('/')[0];
     var gen = this.getGenerator(id);
 
     if(typeof(defaultValue) === 'undefined') {
@@ -121,7 +121,7 @@ NameGeneratorSet.prototype.import = function(obj, preload) {
         keys = Object.keys(obj.categoryMetaData);
         for(var i = 0; i < keys.length; ++i) {
             key = keys[i];
-            this.setCategoryMetaData(key, obj.categoryMetaData[key])
+            this.setCategoryMeta(key, obj.categoryMetaData[key])
         }
     }
 }
